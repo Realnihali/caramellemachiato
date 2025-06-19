@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-ch">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bihal not Seener</title>
+  <title>Bihal's Video Page</title>
   <style>
     * {
       margin: 0;
@@ -11,8 +11,7 @@
       box-sizing: border-box;
     }
 
-    html,
-    body {
+    html, body {
       width: 100vw;
       height: 100vh;
       overflow: hidden;
@@ -22,7 +21,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      perspective: 1000px;
+      font-family: sans-serif;
     }
 
     @keyframes bgShift {
@@ -36,192 +35,53 @@
       to { filter: hue-rotate(360deg); }
     }
 
-    .cube {
-      width: 200px;
-      height: 200px;
-      transform: rotateX(-30deg) rotateY(-80deg);
-      transform-style: preserve-3d;
-      animation: rotateCube 15s linear infinite, pulseCube 3s ease-in-out infinite;
-      position: relative;
-    }
-
-    @keyframes rotateCube {
-      from { transform: rotateX(-30deg) rotateY(0); }
-      to { transform: rotateX(-30deg) rotateY(360deg); }
-    }
-
-    @keyframes pulseCube {
-      0%, 100% { transform: rotateX(-30deg) rotateY(0) scale(1); }
-      50% { transform: rotateX(-30deg) rotateY(0) scale(1.05); }
-    }
-
-    .cube .outer-cube > div {
-      position: absolute;
-      width: 180px;
-      height: 200px;
-      border: 1px solid #fff;
-      opacity: 0.3;
-      transition: all 0.5s ease;
-      backface-visibility: hidden;
-    }
-
-    .outer-top    { transform: rotateX(90deg) translateZ(100px); }
-    .outer-bottom { transform: rotateX(-90deg) translateZ(100px); }
-    .outer-front  { transform: rotateY(0deg) translateZ(100px); }
-    .outer-back   { transform: rotateY(180deg) translateZ(100px); }
-    .outer-left   { transform: rotateY(90deg) translateZ(100px); }
-    .outer-right  { transform: rotateY(-90deg) translateZ(100px); }
-
-    .video-box {
-      width: 100%;
-      height: 100%;
-      padding: 4px;
-      border: 2px solid white;
-      border-radius: 8px;
+    .video-wrapper {
+      width: 70vw;
+      height: 70vh;
+      border: 5px solid #fff;
+      border-radius: 15px;
       overflow: hidden;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+      transition: transform 0.3s ease;
+      background-color: black;
     }
 
-    .video-box video {
+    .video-wrapper:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 35px rgba(255, 255, 255, 0.8);
+    }
+
+    iframe {
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      border-radius: 4px;
+      border: none;
     }
 
-    #copy {
+    .footer {
       position: fixed;
-      bottom: 12px;
+      bottom: 10px;
       left: 50%;
       transform: translateX(-50%);
-      font-size: 0.9rem;
-      color: rgba(255, 255, 255, 0.8);
+      color: white;
+      font-weight: bold;
+      font-size: 14px;
     }
 
-    #copy a {
-      color: rgba(255, 255, 255, 0.9);
+    .footer a {
+      color: #ffd;
       text-decoration: none;
-    }
-
-    canvas#sparkle {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: -3;
     }
   </style>
 </head>
 <body>
 
-  <div class="cube">
-    <div class="outer-cube">
-      <div class="outer-top">
-        <div class="video-box">
-          <video autoplay muted loop playsinline>
-            <source src="https://www.blogger.com/video.g?token=AD6v5dyN_D_B3MdSWJeWDmffjs34cLrgHu3eoqq536Q_FyeZO8qt3j3wmaMFGjpvcenZDQbkQHA0-EUB0ltlSsfIw2DqSh3JpnakH3Q9woQ-mtUDyU_CwARouwgcjNZ5oSIK6KXFNlk" type="video/mp4">
-          </video>
-        </div>
-      </div>
-
-      <div class="outer-bottom">
-        <div class="video-box">
-          <video autoplay muted loop playsinline>
-            <source src="https://www.blogger.com/video.g?token=AD6v5dyN_D_B3MdSWJeWDmffjs34cLrgHu3eoqq536Q_FyeZO8qt3j3wmaMFGjpvcenZDQbkQHA0-EUB0ltlSsfIw2DqSh3JpnakH3Q9woQ-mtUDyU_CwARouwgcjNZ5oSIK6KXFNlk" type="video/mp4">
-          </video>
-        </div>
-      </div>
-
-      <div class="outer-front">
-        <div class="video-box">
-          <video autoplay muted loop playsinline>
-            <source src="https://www.blogger.com/video.g?token=AD6v5dyN_D_B3MdSWJeWDmffjs34cLrgHu3eoqq536Q_FyeZO8qt3j3wmaMFGjpvcenZDQbkQHA0-EUB0ltlSsfIw2DqSh3JpnakH3Q9woQ-mtUDyU_CwARouwgcjNZ5oSIK6KXFNlk" type="video/mp4">
-          </video>
-        </div>
-      </div>
-
-      <div class="outer-back">
-        <div class="video-box">
-          <video autoplay muted loop playsinline>
-            <source src="https://www.blogger.com/video.g?token=AD6v5dyN_D_B3MdSWJeWDmffjs34cLrgHu3eoqq536Q_FyeZO8qt3j3wmaMFGjpvcenZDQbkQHA0-EUB0ltlSsfIw2DqSh3JpnakH3Q9woQ-mtUDyU_CwARouwgcjNZ5oSIK6KXFNlk" type="video/mp4">
-          </video>
-        </div>
-      </div>
-
-      <div class="outer-left">
-        <div class="video-box">
-          <video autoplay muted loop playsinline>
-            <source src="https://www.blogger.com/video.g?token=AD6v5dyN_D_B3MdSWJeWDmffjs34cLrgHu3eoqq536Q_FyeZO8qt3j3wmaMFGjpvcenZDQbkQHA0-EUB0ltlSsfIw2DqSh3JpnakH3Q9woQ-mtUDyU_CwARouwgcjNZ5oSIK6KXFNlk" type="video/mp4">
-          </video>
-        </div>
-      </div>
-
-      <div class="outer-right">
-        <div class="video-box">
-          <video autoplay muted loop playsinline>
-            <source src="https://www.blogger.com/video.g?token=AD6v5dyN_D_B3MdSWJeWDmffjs34cLrgHu3eoqq536Q_FyeZO8qt3j3wmaMFGjpvcenZDQbkQHA0-EUB0ltlSsfIw2DqSh3JpnakH3Q9woQ-mtUDyU_CwARouwgcjNZ5oSIK6KXFNlk" type="video/mp4">
-          </video>
-        </div>
-      </div>
-    </div>
+  <div class="video-wrapper">
+    <iframe src="https://www.youtube.com/embed/-lyHyO2LKIo?autoplay=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
   </div>
 
-  <canvas id="sparkle"></canvas>
-
-  <div id="copy">
-    I am Not special But <a href="https://www.instagram.com/realnihal/">Bihal 💪👍🤌</a>
+  <div class="footer">
+    Created with 💖 by <a href="https://instagram.com/realnihal" target="_blank">Bihal</a>
   </div>
-
-  <script>
-    const c = document.getElementById('sparkle');
-    const ctx = c.getContext('2d');
-    const particles = [];
-
-    function resize() {
-      c.width = innerWidth;
-      c.height = innerHeight;
-    }
-    window.addEventListener('resize', resize);
-    resize();
-
-    class P {
-      constructor() { this.reset(); }
-      reset() {
-        this.x = Math.random() * c.width;
-        this.y = c.height + 10;
-        this.vx = (Math.random() - 0.5) * 1;
-        this.vy = -(1 + Math.random() * 1.5);
-        this.alpha = 0.6 + Math.random() * 0.4;
-        this.size = 1 + Math.random() * 2;
-      }
-      update() {
-        this.x += this.vx;
-        this.y += this.vy;
-        this.alpha -= 0.005;
-        if (this.alpha <= 0) this.reset();
-      }
-      draw() {
-        ctx.fillStyle = `rgba(255,255,255,${this.alpha})`;
-        ctx.beginPath();
-        ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI);
-        ctx.fill();
-      }
-    }
-
-    for (let i = 0; i < 150; i++) particles.push(new P());
-
-    function anim() {
-      ctx.clearRect(0, 0, c.width, c.height);
-      particles.forEach(p => { p.update(); p.draw(); });
-      requestAnimationFrame(anim);
-    }
-    anim();
-  </script>
 
 </body>
 </html>
